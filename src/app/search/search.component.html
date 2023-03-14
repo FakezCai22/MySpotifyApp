@@ -1,0 +1,31 @@
+<style>
+  h3 {text-align: center;}
+  p {text-align: center;}
+  form {text-align: center;}
+  img {text-align: center;}
+  input {text-align: center;}
+  </style>
+
+<h3>Music Search</h3>
+
+<p class="need">Use MySpotify App to find music artist</p>
+<form>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      [(ngModel)]="searchStr"
+      placeholder="Search Artists"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+  <button class="btn btn-secondary" type="submit" (click)="searchSong()" name="submit" value="submit"> Submit </button>
+</form>
+<ng-container *ngIf="listOfMusic !== null">
+  <div *ngFor="let artist of listOfMusic">
+    <p class="name">Profile of {{ artist.name }}</p>
+    <p>Genres: {{ artist.genres }}</p>
+    <p>Followers: {{ artist.followers.total }}</p>
+    <p><img src="{{ artist.images[2].url }}"></p>
+  </div>
+</ng-container>
